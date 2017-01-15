@@ -19,14 +19,15 @@ def roman_to_no(n):
 	return total
 
 def no_to_roman(n):
+	# print n
 	if n == 0:
-		return "None"
-	# if n % 1 != 0 :
-	# 	print "roman does not support for fractions"
-	# 	return 
+		return "roman does not support 0 so : None"
+	if n % 1 != 0:
+		# print "roman does not support for fractions"
+		return "roman does not support for fractions"
 	returnstring=''
 	roman_value = [['M',1000],['CM',900],['D',500],['CD',400],['C',100],['XC',90],['L',50],['XL',40],['X',10],['IX',9],['V',5],['IV',4],['I',1]]
-	for i in roman_value.values():
+	for i in roman_value:
 		while n - i[1] >= 0:
 			n -= i[1]
 			returnstring += i[0]
@@ -37,7 +38,7 @@ import json
 
 @csrf_exempt
 def roman_clc(request):
-	print "hi"
+	# print "hi"
 	# if request.method == 'GET':
 	# 	return render(request, "roman.html",{})
 	# if request.POST:
@@ -47,6 +48,7 @@ def roman_clc(request):
 
 	k = qry["qriy"]
 		# qry = "IX + X"
+	# for spilting expression
 	ab = re.compile(r'[IVXLCDM]+([\+|\-|\*|\/|%][IVXLCDM]+)+')
 	if not ab.match(k):
 		return HttpResponse("Wrong formate of roman Expression-----/\n Roman Number Containce only IVXLCDM \n ex: IX+X ")
@@ -54,6 +56,7 @@ def roman_clc(request):
 	# roman_no = ['I','X','V','X','L','C','D','M']
 	qryl = [x.strip() for x in k.split(oprtr)]
 	q = str(roman_to_no(qryl[0])) + oprtr + str(roman_to_no(qryl[1]))
+
 	''' for more than 3 parmeter like IX + X - I
 	q = str(roman_to_no(qryl[0]))
 	for i in range(1,len(qrly)):
