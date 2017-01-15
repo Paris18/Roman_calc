@@ -1,4 +1,8 @@
 # Roman_calc
+---> install virtual environment
+---> run requirement file exist in folder
+   by-->     pip install -r requirements.txt
+
 http://127.0.0.1:8000/roman_calc/result for execution
 
 -> select POST method
